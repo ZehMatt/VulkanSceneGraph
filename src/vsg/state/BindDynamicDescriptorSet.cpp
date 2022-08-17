@@ -32,7 +32,10 @@ void BindDynamicDescriptorSet::compile(Context& context)
             }
         }
         // descriptor offsets must be specified in binding order
-        std::sort(_dynamicDescriptors.begin(), _dynamicDescriptors.end(), [](const auto& lhs, const auto& rhs) -> auto { return lhs->dstBinding < rhs->dstBinding; });
+        std::sort(
+            _dynamicDescriptors.begin(), _dynamicDescriptors.end(), [](const auto& lhs, const auto& rhs) -> auto {
+                return lhs->dstBinding < rhs->dstBinding;
+            });
     }
 
     Inherit::compile(context);

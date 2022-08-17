@@ -16,16 +16,19 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
 namespace vsg
 {
-    /// dynamic version of DescriptorBuffer with extra buffer space to be used with BindDynamicDescriptorSet. 
+    /// dynamic version of DescriptorBuffer with extra buffer space to be used with BindDynamicDescriptorSet.
     /// If you have state that changes from frame to frame then it's important to buffer it to make sure that queued frames don't overwrite each other.
     class VSG_DECLSPEC BufferedDescriptorBuffer : public Inherit<DescriptorBuffer, BufferedDescriptorBuffer>
     {
     public:
         BufferedDescriptorBuffer();
 
-        explicit BufferedDescriptorBuffer(ref_ptr<Data> data, uint32_t in_dstBinding = 0, uint32_t in_dstArrayElement = 0, VkDescriptorType in_descriptorType = VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER_DYNAMIC) : Inherit(data, in_dstBinding, in_dstArrayElement, in_descriptorType) {}
-        explicit BufferedDescriptorBuffer(const DataList& dataList, uint32_t in_dstBinding = 0, uint32_t in_dstArrayElement = 0, VkDescriptorType in_descriptorType = VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER_DYNAMIC) : Inherit(dataList, in_dstBinding, in_dstArrayElement, in_descriptorType) {}
-        explicit BufferedDescriptorBuffer(const BufferInfoList& in_bufferInfoList, uint32_t in_dstBinding, uint32_t in_dstArrayElement, VkDescriptorType in_descriptorType = VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER_DYNAMIC) : Inherit(in_bufferInfoList, in_dstBinding, in_dstArrayElement, in_descriptorType) {}
+        explicit BufferedDescriptorBuffer(ref_ptr<Data> data, uint32_t in_dstBinding = 0, uint32_t in_dstArrayElement = 0, VkDescriptorType in_descriptorType = VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER_DYNAMIC) :
+            Inherit(data, in_dstBinding, in_dstArrayElement, in_descriptorType) {}
+        explicit BufferedDescriptorBuffer(const DataList& dataList, uint32_t in_dstBinding = 0, uint32_t in_dstArrayElement = 0, VkDescriptorType in_descriptorType = VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER_DYNAMIC) :
+            Inherit(dataList, in_dstBinding, in_dstArrayElement, in_descriptorType) {}
+        explicit BufferedDescriptorBuffer(const BufferInfoList& in_bufferInfoList, uint32_t in_dstBinding, uint32_t in_dstArrayElement, VkDescriptorType in_descriptorType = VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER_DYNAMIC) :
+            Inherit(in_bufferInfoList, in_dstBinding, in_dstArrayElement, in_descriptorType) {}
 
         uint32_t numBuffers = 3;
 

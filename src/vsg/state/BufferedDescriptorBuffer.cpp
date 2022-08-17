@@ -10,9 +10,9 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
 </editor-fold> */
 
-#include <vsg/state/BufferedDescriptorBuffer.h>
 #include <vsg/io/Logger.h>
 #include <vsg/io/Options.h>
+#include <vsg/state/BufferedDescriptorBuffer.h>
 #include <vsg/vk/Context.h>
 
 using namespace vsg;
@@ -24,7 +24,7 @@ size_t padBufferSize(size_t originalSize, VkDeviceSize alignment)
         alignedSize = (alignedSize + alignment - 1) & ~(alignment - 1);
     return alignedSize;
 }
-size_t bufferSize(vsg::Data &data, VkDeviceSize alignment, size_t numBuffers)
+size_t bufferSize(vsg::Data& data, VkDeviceSize alignment, size_t numBuffers)
 {
     return numBuffers * padBufferSize(data.dataSize(), alignment);
 }
@@ -35,7 +35,7 @@ BufferedDescriptorBuffer::~BufferedDescriptorBuffer()
 
 void BufferedDescriptorBuffer::advanceFrame()
 {
-    _frameIndex = (_frameIndex+1)%numBuffers;
+    _frameIndex = (_frameIndex + 1) % numBuffers;
     for (auto& bi : bufferInfoList)
     {
         if (!bi->buffer)
@@ -49,7 +49,7 @@ void BufferedDescriptorBuffer::copyDataListToBuffers()
     Inherit::copyDataListToBuffers();
 }
 
-void BufferedDescriptorBuffer::compile(Context &context)
+void BufferedDescriptorBuffer::compile(Context& context)
 {
     // assign buffer of appripriate size prior to letting superclass compile.
     bool requiresAssignmentOfBuffers = false;
@@ -124,7 +124,7 @@ void BufferedDescriptorBuffer::compile(Context &context)
     tmp_bufferInfoList.swap(bufferInfoList);
     for (auto& bi : tmp_bufferInfoList)
     {
-        auto proxy_bufferInfo = vsg::BufferInfo::create(bi->buffer, bi->offset, bi->range/numBuffers, bi->data);
+        auto proxy_bufferInfo = vsg::BufferInfo::create(bi->buffer, bi->offset, bi->range / numBuffers, bi->data);
         // note, BufferInfo needs to have a parent to use dynamic offsets, otherwise the BufferInfo's destructor will release an incorrect buffer range on destruction.
         proxy_bufferInfo->parent = bi;
         bufferInfoList.push_back(proxy_bufferInfo);

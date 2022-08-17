@@ -100,7 +100,7 @@ void BindViewDescriptorSets::compile(Context& context)
     if (context.viewDependentState)
     {
         context.viewDependentState->compile(context);
-        _bind.resize(context.viewID+1);
+        _bind.resize(context.viewID + 1);
         if (!_bind[context.viewID])
         {
             _bind[context.viewID] = vsg::BindDynamicDescriptorSet::create(pipelineBindPoint, layout, firstSet, context.viewDependentState->descriptorSet);
@@ -120,7 +120,7 @@ void BindViewDescriptorSets::record(CommandBuffer& commandBuffer) const
 //
 ViewDependentState::ViewDependentState(uint32_t maxNumberLights)
 {
-    lightData = vec4Array::create(maxNumberLights); // spot light requires 3 vec4's per light
+    lightData = vec4Array::create(maxNumberLights);                        // spot light requires 3 vec4's per light
     lightDescriptor = vsg::BufferedDescriptorBuffer::create(lightData, 0); // hardwired position for now
 
     DescriptorSetLayoutBindings descriptorBindings{
