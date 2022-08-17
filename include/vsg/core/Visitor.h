@@ -55,9 +55,11 @@ namespace vsg
     class CommandBuffer;
     class RenderPass;
     class BindDescriptorSet;
+    class BindDynamicDescriptorSet;
     class BindDescriptorSets;
     class Descriptor;
     class DescriptorBuffer;
+    class BufferedDescriptorBuffer;
     class DescriptorImage;
     class DescriptorSet;
     class BindVertexBuffers;
@@ -270,9 +272,11 @@ namespace vsg
         virtual void apply(CommandBuffer&);
         virtual void apply(RenderPass&);
         virtual void apply(BindDescriptorSet&);
+        virtual void apply(BindDynamicDescriptorSet&);
         virtual void apply(BindDescriptorSets&);
         virtual void apply(Descriptor&);
         virtual void apply(DescriptorBuffer&);
+        virtual void apply(BufferedDescriptorBuffer&);
         virtual void apply(DescriptorImage&);
         virtual void apply(DescriptorSet&);
         virtual void apply(BindVertexBuffers&);

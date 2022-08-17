@@ -76,6 +76,7 @@ set(SOURCES
 
     state/ArrayState.cpp
     state/BindDescriptorSet.cpp
+    state/BindDynamicDescriptorSet.cpp
     state/Buffer.cpp
     state/BufferInfo.cpp
     state/BufferView.cpp
@@ -84,6 +85,7 @@ set(SOURCES
     state/GraphicsPipeline.cpp
     state/Descriptor.cpp
     state/DescriptorBuffer.cpp
+    state/BufferedDescriptorBuffer.cpp
     state/DescriptorImage.cpp
     state/DescriptorTexelBufferView.cpp
     state/DescriptorSetLayout.cpp
