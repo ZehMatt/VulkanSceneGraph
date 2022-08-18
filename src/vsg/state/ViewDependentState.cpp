@@ -133,7 +133,7 @@ ViewDependentState::~ViewDependentState()
 {
 }
 
-void ViewDependentState::compile(Context& context)
+void ViewDependentState::compile(Context& /*context*/)
 {
 }
 
