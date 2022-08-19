@@ -17,14 +17,15 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
 using namespace vsg;
 
-size_t padBufferSize(size_t originalSize, VkDeviceSize alignment)
+static size_t padBufferSize(size_t originalSize, VkDeviceSize alignment)
 {
     size_t alignedSize = originalSize;
     if (alignment > 0)
         alignedSize = (alignedSize + alignment - 1) & ~(alignment - 1);
     return alignedSize;
 }
-size_t bufferSize(vsg::Data& data, VkDeviceSize alignment, size_t numBuffers)
+
+static size_t bufferSize(vsg::Data& data, VkDeviceSize alignment, size_t numBuffers)
 {
     return numBuffers * padBufferSize(data.dataSize(), alignment);
 }
