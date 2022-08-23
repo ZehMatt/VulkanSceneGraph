@@ -19,9 +19,9 @@ macro(vsg_setup_build_vars)
     set(CMAKE_MINSIZEREL_POSTFIX "s" CACHE STRING "add a postfix, usually empty on windows")
 
     # Change the default build type to Release
-    if(NOT CMAKE_BUILD_TYPE)
-        set(CMAKE_BUILD_TYPE Release CACHE STRING "Choose the type of build, options are: None Debug Release RelWithDebInfo MinSizeRel." FORCE)
-    endif(NOT CMAKE_BUILD_TYPE)
+    #if(NOT CMAKE_BUILD_TYPE)
+        #set(CMAKE_BUILD_TYPE Release CACHE STRING "Choose the type of build, options are: None Debug Release RelWithDebInfo MinSizeRel." FORCE)
+    #endif(NOT CMAKE_BUILD_TYPE)
 
 
     if(CMAKE_COMPILER_IS_GNUCXX)
